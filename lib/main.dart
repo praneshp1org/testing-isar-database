@@ -1,6 +1,15 @@
 import 'package:flutter/material.dart';
+import 'package:isar/isar.dart';
+import 'package:isar111/collections/category.dart';
 
-void main() {
+// import 'collections/routine.dart';
+import 'package:isar111/collections/routine.dart';
+import 'package:path_provider/path_provider.dart';
+
+void main() async {
+  final dir = await getApplicationSupportDirectory();
+  final isar = await Isar.open(
+      schemas: [RoutineSchema, CategorySchema], directory: dir.path);
   runApp(const MyApp());
 }
 
