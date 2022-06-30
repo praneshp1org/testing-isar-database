@@ -1,6 +1,8 @@
 //category, title, start time, day
 //annotation
 import 'package:isar/isar.dart';
+import 'package:isar111/collections/category.dart';
+part 'routine.g.dart';
 
 @Collection()
 class Routine {
@@ -11,8 +13,9 @@ class Routine {
   @Index()
   late DateTime startTime;
 
-  @Index(caseSensitive: false)
+  @Index(caseSensitive: false) //caseSensitive Indexing
   late String day;
+
   @Index(composite: [CompositeIndex('title')]) //composite ndexing
-  late String category;
+  final category = IsarLink<Category>(); //Linking Collection
 }
